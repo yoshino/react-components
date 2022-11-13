@@ -22,5 +22,14 @@ services:
     volumes:
       - ./backend:/app
     command: rails server -b 0.0.0.0
+  frontend: 
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/app:/usr/src/app
+    command: 'yarn dev'
+    ports:
+      - "4000:3000"
 volumes:
   mysql-db:
