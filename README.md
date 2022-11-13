@@ -23,3 +23,11 @@ RuboCop for Rails.
 ```
 docker compose bundle exec rubocop
 ```
+
+## Test
+
+RSpec for Rails.
+
+```
+docker compose bundle exec rspec
+```
