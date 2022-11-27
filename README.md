@@ -16,12 +16,24 @@ docker compose up
 backend(Ruby on Rails) works on 3000 port.  
 frontend(Next.js) works on 4000 port.
 
-## Lint
+## Lint and Format
 
 RuboCop for Rails.
 
 ```
-docker compose bundle exec rubocop
+docker compose run backend rubocop
+```
+
+Lint for Next.js
+
+```
+docker compose run yarn lint
+```
+
+Format for Next.js
+
+```
+docker compose run yarn format
 ```
 
 ## Test
