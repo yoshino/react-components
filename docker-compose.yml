@@ -1,35 +1,12 @@
-version: '3.7'
+version: "3.7"
 
-services: 
-  db:
-    image: mysql:8.0.15
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql-db:/var/lib/mysql
-    command: mysqld --default-authentication-plugin=mysql_native_password
-  backend:
-    tty: true
-    depends_on:
-      - db
+services:
+  app:
     build:
-      context: ./backend/
-      dockerfile: Dockerfile
-    ports:
-      - 3000:3000
-    volumes:
-      - ./backend:/app
-    command: rails server -b 0.0.0.0
-  frontend: 
-    build:
-      context: ./frontend/
+      context: ./app/
       dockerfile: Dockerfile
     volumes:
-      - ./frontend/app:/usr/src/app
-    command: 'yarn dev'
+      - ./app/src:/usr/src/app
+    command: "yarn dev"
     ports:
       - "4000:3000"
-volumes:
-  mysql-db:
