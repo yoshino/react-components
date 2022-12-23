@@ -7,6 +7,7 @@ docker compose up
 ```
 
 Next.js works on 4000 port.
+Storybook works on 6006 port.
 
 ## Lint and Format
 
