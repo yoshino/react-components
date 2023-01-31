@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import { sortBy } from 'lodash'
 import { useState } from 'react'
 
-type Prop = {
+type Props = {
   stories: Story[]
   className?: string
 }
@@ -15,11 +15,11 @@ type Story = {
   num_comments: number
 }
 
-type ListItemProp = {
+type ListItemProps = {
   story: Story
 }
 
-const ListItem: React.FC<ListItemProp> = ({ story }) => {
+const ListItem: React.FC<ListItemProps> = ({ story }) => {
   return (
     <li className='grid grid-cols-8 gap-1 px-4'>
       <span className='col-span-4'>{story.title}</span>
@@ -40,10 +40,10 @@ const SORTS = {
   NONE: (list: Story[]) => list,
   TITLE: (list: Story[]) => sortBy(list, 'title'),
   AUTHOR: (list: Story[]) => sortBy(list, 'author'),
-  COMMENT: (list: Story[]) => sortBy(list, 'comment'),
+  COMMENT: (list: Story[]) => sortBy(list, 'num_comments'),
 }
 
-const HackerNewsList: React.FC<Prop> = ({ stories, className }) => {
+const HackerNewsList: React.FC<Props> = ({ stories, className }) => {
   const [sort, setSort] = useState<SortState>({
     sortKey: 'NONE',
     isReverse: false,
@@ -60,13 +60,19 @@ const HackerNewsList: React.FC<Prop> = ({ stories, className }) => {
   return (
     <ul className={classnames(className)}>
       <li className='flex my-5'>
-        <button onClick={() => handleSort('TITLE')} className='mr-4 px-4 bg-slate-400 rounded'>
+        <button
+          onClick={() => handleSort('TITLE')}
+          className='mr-4 px-3 py-1 bg-slate-400 rounded-md'
+        >
           Title
         </button>
-        <button onClick={() => handleSort('AUTHOR')} className='mr-4 px-4 bg-slate-400 rounded'>
+        <button
+          onClick={() => handleSort('AUTHOR')}
+          className='mr-4 px-3 py-1 bg-slate-400 rounded-md'
+        >
           Author
         </button>
-        <button onClick={() => handleSort('COMMENT')} className='px-4 bg-slate-400 rounded'>
+        <button onClick={() => handleSort('COMMENT')} className='px-3 py-1 bg-slate-400 rounded-md'>
           Comments
         </button>
         <span className='col-span-2'></span>

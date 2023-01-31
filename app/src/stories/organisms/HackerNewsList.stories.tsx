@@ -1,5 +1,5 @@
 import { type ComponentStory, type ComponentMeta } from '@storybook/react'
-import React, { ComponentProps } from 'react'
+import React from 'react'
 
 import HackerNewsList from '../../components/organisms/HackerNewsList'
 
