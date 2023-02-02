@@ -1,4 +1,5 @@
-import React, { FormEvent, ChangeEvent } from 'react'
+import type { FormEvent, ChangeEvent } from 'react';
+import React from 'react'
 
 import HackerNewsList from '../components/organisms/HackerNewsList'
 import { useHackerNews } from '../hooks/useHackerNews'
