@@ -5,7 +5,8 @@
     "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
     "plugin:import/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "prettier"
   ],
   "settings": {
     "typescript": true,
