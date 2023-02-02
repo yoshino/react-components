@@ -11,13 +11,13 @@ const useStorageState = (props: {
     const storageValue = localStorage.getItem(key)
     console.log('get local storage: ', storageValue)
     if (storageValue) setValue(storageValue)
-  }, [])
+  }, [key])
 
   useEffect(() => {
     if (value !== initialValue) {
       localStorage.setItem(key, value)
     }
-  }, [value, key])
+  }, [value, key, initialValue])
 
   return [value, setValue]
 }

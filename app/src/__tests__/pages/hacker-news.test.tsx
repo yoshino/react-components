@@ -43,7 +43,7 @@ const statusErrorStoriesMock = () =>
 
 describe('hacker-news page', () => {
   afterAll(() => {
-    ;(global.fetch as jest.Mock).mockClear()
+    (global.fetch as jest.Mock).mockClear()
   })
 
   test('render:loding', async () => {
