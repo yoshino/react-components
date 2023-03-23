@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  // REF: https://github.com/vercel/next.js/issues/35822#issuecomment-1100594638
+  reactStrictMode: false,
   swcMinify: true,
 }
 

@@ -1,6 +1,7 @@
-import type { FormEvent, ChangeEvent } from 'react';
+import type { FormEvent, ChangeEvent } from 'react'
 import React from 'react'
 
+import Title from '../components/atoms/Title'
 import HackerNewsList from '../components/organisms/HackerNewsList'
 import { useHackerNews } from '../hooks/useHackerNews'
 
@@ -47,7 +48,7 @@ export const Template: React.FC<TemplateProps> = ({ loading, error, children }) 
   if (loading) {
     return (
       <div className='p-4'>
-        <h1 className='text-4xl mb-4'>Hacker News</h1>
+        <Title className='mb-4'>Hacker News</Title>
         <div>Loading...</div>
       </div>
     )
@@ -56,7 +57,7 @@ export const Template: React.FC<TemplateProps> = ({ loading, error, children }) 
   if (error) {
     return (
       <div className='p-4'>
-        <h1 className='text-4xl mb-4'>Hacker News</h1>
+        <Title className='mb-4'>Hacker News</Title>
         <div>Something went wrong!</div>
       </div>
     )
@@ -64,7 +65,7 @@ export const Template: React.FC<TemplateProps> = ({ loading, error, children }) 
 
   return (
     <div className='p-4'>
-      <h1 className='text-4xl mb-4'>Hacker News</h1>
+      <Title className='mb-4'>Hacker News</Title>
       {children}
     </div>
   )

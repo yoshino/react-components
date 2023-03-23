@@ -1,5 +1,5 @@
-import type { Dispatch, SetStateAction } from 'react';
-import { useState, useEffect } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const useStorageState = (props: {
   key: string
@@ -7,15 +7,24 @@ const useStorageState = (props: {
 }): [string, Dispatch<SetStateAction<string>>] => {
   const { key, initialValue } = props
   const [value, setValue] = useState(initialValue)
+  const didMountRef = useRef(false)
 
+  // initialization
   useEffect(() => {
     const storageValue = localStorage.getItem(key)
-    console.log('get local storage: ', storageValue)
-    if (storageValue) setValue(storageValue)
-  }, [key])
+    if (storageValue) {
+      setValue(storageValue)
+    } else {
+      setValue(initialValue)
+    }
+  }, [key, initialValue])
 
+  // update except for mount
   useEffect(() => {
-    if (value !== initialValue) {
+    if (!didMountRef.current) {
+      didMountRef.current = true
+    } else {
+      setValue(value)
       localStorage.setItem(key, value)
     }
   }, [value, key, initialValue])
